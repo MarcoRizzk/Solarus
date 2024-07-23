@@ -7,7 +7,7 @@
   --color-headertxt: #0a143a;
   --color-border: #c9cbd5;
   --color-tabletxt: #636888;
-  --color-vip: #FFAC3A;
+  --color-vip: #ffac3a;
   background-color: #f6f7f9;
   padding-top: 64px;
   padding-bottom: 20px;
@@ -32,13 +32,18 @@
   }
 }
 
-
 .bullet::before {
-  content: '•';
+  content: "•";
   display: inline-block;
   margin-right: 0.5rem;
   color: inherit;
 }
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: "Almarai";
+}
