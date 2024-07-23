@@ -4,7 +4,7 @@
 
   <!-- General Details Part -->
   <div
-    class="flex bg-white rounded-[18px] py-9 px-6 shadow-[0px_4px_14px_0px_rgba(0,0,0,0.08)]"
+    class="flex flex-col lg:flex-row gap-y-4 md:gap-y-0 bg-white rounded-[18px] py-9 px-6 shadow-[0px_4px_14px_0px_rgba(0,0,0,0.08)]"
   >
     <div class="ml-auto flex gap-4">
       <div class="p-[11px] rounded-[7px] bg-pink-500 bg-opacity-20 w-10 h-10">
@@ -12,12 +12,16 @@
       </div>
       <div>
         <p class="text-gray-400 text-xs">عدد المستخدمون في الوحدة</p>
-        <p class="text-black text-lg font-bold">96 مستخدم</p>
+        <p class="text-black text-lg font-bold">
+          {{ allEmployees.length }} مستخدم
+        </p>
       </div>
     </div>
-    <div class="mr-auto flex gap-4 text-headertxt pt-1">
+    <div
+      class="mr-auto flex gap-1 md:gap-2 lg:gap-4 text-headertxt pt-1 text-xs md:text-sm lg:text-base"
+    >
       <button
-        class="bg-transparent rounded-full border-[1px] border-border px-4 py-2 flex items-center justify-center gap-2 text-base"
+        class="bg-transparent rounded-full border-[1px] border-border px-4 py-0 md:py-2 flex items-center justify-center gap-2"
       >
         <img src="./../../assets/icons/search.svg" alt="search icon" />
 
@@ -26,7 +30,7 @@
       </button>
       <span class="border-gray-100 h-full border-[1px]"></span>
       <button
-        class="bg-transparent rounded-full border-[1px] border-border px-4 py-2 flex items-center justify-center gap-2 text-base"
+        class="bg-transparent rounded-full border-[1px] border-border px-4 py-0 md:py-2 flex items-center justify-center gap-2"
       >
         <img src="./../../assets/icons/options.svg" alt="search icon" />
         <p class="pb-1">فرز</p>
@@ -35,59 +39,62 @@
       <span class="border-gray-100 h-full border-[1px]"></span>
 
       <button
-        class="bg-primary text-white rounded-full border-[1px] border-border px-6 py-2 flex items-center justify-center gap-2 text-base"
+        class="bg-primary text-white rounded-full border-[1px] border-border px-6 py-0 md:py-2 flex items-center justify-center gap-2"
       >
         <img src="./../../assets/icons/add.svg" alt="search icon" />
-        <p class="pb-1">إضافة مستخدم</p>
+        <p class="pb-1 whitespace-nowrap">إضافة مستخدم</p>
       </button>
     </div>
   </div>
 
-  <!-- Employees Data -->
+  <!-- Employees Table -->
   <div
     class="bg-white rounded-[34px] p-4 w-full shadow-[0px_4px_24px_0px_rgba(0,0,0,0.08)]"
   >
-    <div class="w-full flex bg-background rounded-full py-4 px-[6px] mb-4">
+    <!-- Table Header -->
+    <div
+      class="w-full flex bg-background rounded-t-[20px] py-4 px-[6px] mb-4 h-[50px]"
+    >
       <div class="w-[2.8%] flex items-center justify-center">
         <img src="./../../assets/icons/minus-box.svg" />
       </div>
-      <div class="w-[10.7%] flex gap-2">
+      <div class="w-[10.7%] flex gap-2 pr-4">
         <button>
           <img src="./../../assets/icons/sort.svg" alt="search icon" />
         </button>
         <p class="text-headertxt text-xs">المُسلسل</p>
       </div>
-      <div class="w-[9.64%] flex gap-2">
+      <div class="w-[9.64%] flex gap-2 pr-4">
         <button>
           <img src="./../../assets/icons/sort.svg" alt="search icon" />
         </button>
         <p class="text-headertxt text-xs">الحالة</p>
       </div>
-      <div class="w-[15.33%] flex gap-2">
+      <div class="w-[15.33%] flex gap-2 pr-4">
         <button>
           <img src="./../../assets/icons/sort.svg" alt="search icon" />
         </button>
         <p class="text-headertxt text-xs">الاسم</p>
       </div>
-      <div class="w-[19%] flex gap-2">
+      <div class="w-[19%] flex gap-2 pr-4">
         <button>
           <img src="./../../assets/icons/sort.svg" alt="search icon" />
         </button>
         <p class="text-headertxt text-xs">مُسلسل المستخدم</p>
       </div>
-      <div class="w-[15.14%] flex gap-2">
+      <div class="w-[15.14%] flex gap-2 pr-4">
         <button>
           <img src="./../../assets/icons/sort.svg" alt="search icon" />
         </button>
         <p class="text-headertxt text-xs">صلاحية المستخدم</p>
       </div>
-      <div class="w-[12.44%] flex gap-2">
+      <div class="w-[12.44%] flex gap-2 pr-4">
         <button>
           <img src="./../../assets/icons/sort.svg" alt="search icon" />
         </button>
         <p class="text-headertxt text-xs">الوظيفة</p>
       </div>
-      <div class="w-[12.15%] flex gap-2">
+      <div class="w-[12.15%] flex gap-2 pr-4">
         <button>
           <img src="./../../assets/icons/sort.svg" alt="search icon" />
         </button>
@@ -96,40 +103,74 @@
       <div class="w-[2.8%]"></div>
     </div>
 
+    <!-- Table Contents -->
     <ng-container *ngFor="let employee of allEmployees; let i = index">
-      <div
-        [ngClass]="(i + 1) % 2 === 0 ? 'bg-background' : 'bg-white'"
-        class="rounded-full w-full flex px-[6px] py-2 text-tabletxt text-sm gap-2"
-      >
-        <div class="w-[2.8%] flex items-center justify-center">
+      <div class="w-full flex px-[6px] text-tabletxt text-sm h-10 mb-2">
+        <div
+          class="w-[2.8%] flex items-center justify-center"
+          [ngClass]="(i + 1) % 2 === 0 ? 'bg-background' : 'bg-white'"
+        >
           <input
             class="w-4 h-4"
             type="checkbox"
             (click)="onCheckboxChange(employee)"
           />
         </div>
-        <div class="w-[10.7%] flex gap-2">
+        <div
+          class="w-[10.7%] flex gap-2 pr-4 py-2 rounded-l-[4px]"
+          [ngClass]="(i + 1) % 2 === 0 ? 'bg-background' : 'bg-white'"
+        >
           {{ employee.serial }}
         </div>
-        <div class="w-[9.64%] flex gap-2">
+        <div
+          class="w-[9.64%] flex items-center gap-2 pr-4 bg-opacity-10 rounded-[4px] bullet border-[1px] border-white"
+          [ngClass]="
+            employee.status === 'active'
+              ? 'bg-green-500 text-positive'
+              : 'bg-red-500 text-negative'
+          "
+        >
           {{ employee.status === "active" ? "فعال" : "غير فعال" }}
         </div>
-        <div class="w-[15.33%] flex gap-2 truncate">
-          {{ employee.name }}
+
+        <div
+          class="w-[15.33%] flex gap-2 py-2 pr-2 rounded-r-[4px]"
+          [ngClass]="(i + 1) % 2 === 0 ? 'bg-background' : 'bg-white'"
+        >
+          <div class="flex gap-2 items-center pr-2" [ngClass]="employee.vip ? 'border-vip border-r-2' : ''">
+            <img *ngIf="employee.vip" class="h-[14px] w-[14px]" src="./../../assets/icons/vip.svg">
+            {{ employee.name }}
+          </div>
         </div>
-        <div class="w-[19%] flex gap-2">
+        <div
+          class="w-[19%] flex gap-2 pr-4 py-2"
+          [ngClass]="(i + 1) % 2 === 0 ? 'bg-background' : 'bg-white'"
+        >
           {{ employee.userSerial }}
         </div>
-        <div class="w-[15.14%] flex gap-2">
+        <div
+          class="w-[15.14%] flex gap-2 pr-4 py-2"
+          [ngClass]="(i + 1) % 2 === 0 ? 'bg-background' : 'bg-white'"
+        >
           {{ employee.userAuthority }}
         </div>
-        <div class="w-[12.44%] flex gap-2">
+        <div
+          class="w-[12.44%] flex gap-2 pr-4 py-2"
+          [ngClass]="(i + 1) % 2 === 0 ? 'bg-background' : 'bg-white'"
+        >
           {{ employee.function }}
         </div>
-        <div class="w-[12.15%] flex flex-row-reverse gap-2" dir="ltr">
+        <div
+          class="w-[12.15%] flex flex-row-reverse gap-2 pr-4 py-2"
+          dir="ltr"
+          [ngClass]="(i + 1) % 2 === 0 ? 'bg-background' : 'bg-white'"
+        >
           {{ employee.mobile }}
         </div>
-        <div class="w-[2.8%]"></div>
+        <div
+          class="w-[2.8%]"
+          [ngClass]="(i + 1) % 2 === 0 ? 'bg-background' : 'bg-white'"
+        ></div>
       </div>
     </ng-container>
   </div>

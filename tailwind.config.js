@@ -12,6 +12,7 @@ module.exports = {
         headertxt: "var(--color-headertxt)",
         border: "var(--color-border)",
         tabletxt: "var(--color-tabletxt)",
+        vip: "var(--color-vip)",
       },
     },
   },

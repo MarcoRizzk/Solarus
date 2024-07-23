@@ -7,7 +7,8 @@
       "userSerial": 5467898765,
       "userAuthority": "حامل الكارت",
       "function": "محاسب",
-      "mobile": "+20 123 456 7890"
+      "mobile": "+20 123 456 7890",
+      "vip": false
     },
     {
       "serial": 2,
@@ -16,7 +17,8 @@
       "userSerial": 5467898766,
       "userAuthority": "مدير الهيكل التنظيمي",
       "function": "مدير",
-      "mobile": "+20 234 567 8901"
+      "mobile": "+20 234 567 8901",
+      "vip": true
     },
     {
       "serial": 3,
@@ -25,7 +27,8 @@
       "userSerial": 5467898767,
       "userAuthority": "حامل الكارت",
       "function": "محاسب",
-      "mobile": "+20 345 678 9012"
+      "mobile": "+20 345 678 9012",
+      "vip": false
     },
     {
       "serial": 4,
@@ -34,7 +37,8 @@
       "userSerial": 5467898768,
       "userAuthority": "مدير الهيكل التنظيمي",
       "function": "مدير",
-      "mobile": "+20 456 789 0123"
+      "mobile": "+20 456 789 0123",
+      "vip": false
     },
     {
       "serial": 5,
@@ -43,7 +47,8 @@
       "userSerial": 5467897659,
       "userAuthority": "حامل الكارت",
       "function": "محاسب",
-      "mobile": "+20 567 890 1234"
+      "mobile": "+20 567 890 1234",
+      "vip": false
     },
     {
       "serial": 6,
@@ -52,7 +57,8 @@
       "userSerial": 5467898765,
       "userAuthority": "مدير الهيكل التنظيمي",
       "function": "مدير",
-      "mobile": "+20 678 901 2345"
+      "mobile": "+20 678 901 2345",
+      "vip": true
     },
     {
       "serial": 7,
@@ -61,7 +67,8 @@
       "userSerial": 5467898842,
       "userAuthority": "حامل الكارت",
       "function": "محاسب",
-      "mobile": "+20 789 012 3456"
+      "mobile": "+20 789 012 3456",
+      "vip": false
     },
     {
       "serial": 8,
@@ -70,7 +77,8 @@
       "userSerial": 5467898830,
       "userAuthority": "مدير الهيكل التنظيمي",
       "function": "مدير",
-      "mobile": "+20 890 123 4567"
+      "mobile": "+20 890 123 4567",
+      "vip": false
     },
     {
       "serial": 9,
@@ -79,7 +87,8 @@
       "userSerial": 5467898799,
       "userAuthority": "حامل الكارت",
       "function": "محاسب",
-      "mobile": "+20 901 234 5678"
+      "mobile": "+20 901 234 5678",
+      "vip": false
     },
     {
       "serial": 10,
@@ -88,7 +97,8 @@
       "userSerial": 5467894502,
       "userAuthority": "مدير الهيكل التنظيمي",
       "function": "مدير",
-      "mobile": "+20 012 345 6789"
+      "mobile": "+20 012 345 6789",
+      "vip": false
     }
   ]
 }

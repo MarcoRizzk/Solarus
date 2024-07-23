@@ -6,4 +6,5 @@ export interface Employee {
     userAuthority: string;
     function: string;
     mobile: string;
+    vip: boolean;
   }
