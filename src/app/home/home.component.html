@@ -77,13 +77,19 @@
         <p class="text-headertxt text-xs">الاسم</p>
       </div>
       <div class="w-[19%] flex gap-2 pr-4">
-        <button (click)="sortBy('userSerial')" title="الترتيب حسب مُسلسل المستخدم">
+        <button
+          (click)="sortBy('userSerial')"
+          title="الترتيب حسب مُسلسل المستخدم"
+        >
           <img src="./../../assets/icons/sort.svg" alt="search icon" />
         </button>
         <p class="text-headertxt text-xs">مُسلسل المستخدم</p>
       </div>
       <div class="w-[15.14%] flex gap-2 pr-4">
-        <button (click)="sortBy('userAuthority')" title="الترتيب حسب صلاحية المستخدم">
+        <button
+          (click)="sortBy('userAuthority')"
+          title="الترتيب حسب صلاحية المستخدم"
+        >
           <img src="./../../assets/icons/sort.svg" alt="search icon" />
         </button>
         <p class="text-headertxt text-xs">صلاحية المستخدم</p>
@@ -105,7 +111,9 @@
 
     <!-- Table Contents -->
     <ng-container *ngFor="let employee of allEmployees; let i = index">
-      <div class="w-full flex px-[6px] text-tabletxt text-sm h-10 mb-2 min-w-[1037px]">
+      <div
+        class="w-full flex px-[6px] text-tabletxt text-sm h-10 mb-2 min-w-[1037px]"
+      >
         <div
           class="w-[2.8%] flex items-center justify-center"
           [ngClass]="(i + 1) % 2 === 0 ? 'bg-background' : 'bg-white'"
@@ -137,8 +145,15 @@
           class="w-[15.33%] flex gap-2 py-2 pr-2 rounded-r-[4px]"
           [ngClass]="(i + 1) % 2 === 0 ? 'bg-background' : 'bg-white'"
         >
-          <div class="flex gap-2 items-center pr-2" [ngClass]="employee.vip ? 'border-vip border-r-2' : ''">
-            <img *ngIf="employee.vip" class="h-[14px] w-[14px]" src="./../../assets/icons/vip.svg">
+          <div
+            class="flex gap-2 items-center pr-2"
+            [ngClass]="employee.vip ? 'border-vip border-r-2' : ''"
+          >
+            <img
+              *ngIf="employee.vip"
+              class="h-[14px] w-[14px]"
+              src="./../../assets/icons/vip.svg"
+            />
             {{ employee.name }}
           </div>
         </div>
@@ -168,9 +183,13 @@
           {{ employee.mobile }}
         </div>
         <div
-          class="w-[2.8%]"
+          class="w-[2.8%] flex items-center justify-center"
           [ngClass]="(i + 1) % 2 === 0 ? 'bg-background' : 'bg-white'"
-        ></div>
+        >
+          <button>
+            <img src="./../../assets/icons/3-dots.svg" />
+          </button>
+        </div>
       </div>
     </ng-container>
   </div>
