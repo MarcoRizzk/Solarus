@@ -3,48 +3,72 @@
   <p class="text-2xl text-primary">المستخدمون</p>
 
   <!-- General Details Part -->
-  <div
-    class="flex flex-col lg:flex-row gap-y-4 md:gap-y-0 bg-white rounded-[18px] py-9 px-6 shadow-[0px_4px_14px_0px_rgba(0,0,0,0.08)]"
-  >
-    <div class="ml-auto flex gap-4">
-      <div class="p-[11px] rounded-[7px] bg-pink-500 bg-opacity-20 w-10 h-10">
-        <img src="./../../assets/icons/users.svg" alt="users icon" />
-      </div>
-      <div>
-        <p class="text-gray-400 text-xs">عدد المستخدمون في الوحدة</p>
-        <p class="text-black text-lg font-bold">
-          {{ allEmployees.length }} مستخدم
-        </p>
-      </div>
-    </div>
+  <div>
     <div
-      class="mr-auto flex gap-1 md:gap-2 lg:gap-4 text-headertxt pt-1 text-xs md:text-sm lg:text-base"
+      class="flex flex-col lg:flex-row gap-y-4 md:gap-y-0 bg-white py-9 px-6 shadow-[0px_4px_14px_0px_rgba(0,0,0,0.08)]"
+      [ngClass]="isPanelExpanded ? 'rounded-t-[18px]' : 'rounded-[18px]'"
     >
-      <button
-        class="bg-transparent rounded-full border-[1px] border-border px-4 py-0 md:py-2 flex items-center justify-center gap-2"
+      <div class="ml-auto flex gap-4">
+        <div class="p-[11px] rounded-[7px] bg-pink-500 bg-opacity-20 w-10 h-10">
+          <img src="./../../assets/icons/users.svg" alt="users icon" />
+        </div>
+        <div>
+          <p class="text-gray-400 text-xs">عدد المستخدمون في الوحدة</p>
+          <p class="text-black text-lg font-bold">
+            {{ allEmployees.length }} مستخدم
+          </p>
+        </div>
+      </div>
+      <div
+        class="mr-auto flex gap-1 md:gap-2 lg:gap-4 text-headertxt pt-1 text-xs md:text-sm lg:text-base"
       >
-        <img src="./../../assets/icons/search.svg" alt="search icon" />
+        <button
+          class="bg-transparent rounded-full border-[1px] border-border px-4 py-0 md:py-2 flex items-center justify-center gap-2"
+        >
+          <img src="./../../assets/icons/search.svg" alt="search icon" />
 
-        <p class="pb-1">بحث</p>
-        <img src="./../../assets/icons/arrow-down.svg" alt="search icon" />
-      </button>
-      <span class="border-gray-100 h-full border-[1px]"></span>
-      <button
-        class="bg-transparent rounded-full border-[1px] border-border px-4 py-0 md:py-2 flex items-center justify-center gap-2"
-      >
-        <img src="./../../assets/icons/options.svg" alt="search icon" />
-        <p class="pb-1">فرز</p>
-        <img src="./../../assets/icons/arrow-down.svg" alt="search icon" />
-      </button>
-      <span class="border-gray-100 h-full border-[1px]"></span>
+          <p class="pb-1">بحث</p>
+          <img src="./../../assets/icons/arrow-down.svg" alt="search icon" />
+        </button>
+        <span class="border-gray-100 h-full border-[1px]"></span>
+        <button
+          class="bg-transparent rounded-full border-[1px] border-border px-4 py-0 md:py-2 flex items-center justify-center gap-2"
+          (click)="togglePanel()"
+        >
+          <img src="./../../assets/icons/options.svg" alt="search icon" />
+          <p class="pb-1">فرز</p>
+          <img
+            [class.rotate-180]="isPanelExpanded"
+            src="./../../assets/icons/arrow-down.svg"
+            alt="search icon"
+          />
+        </button>
+        <span class="border-gray-100 h-full border-[1px]"></span>
 
-      <button
-        class="bg-primary text-white rounded-full border-[1px] border-border px-6 py-0 md:py-2 flex items-center justify-center gap-2"
-      >
-        <img src="./../../assets/icons/add.svg" alt="search icon" />
-        <p class="pb-1 whitespace-nowrap">إضافة مستخدم</p>
-      </button>
+        <button
+          class="bg-primary text-white rounded-full border-[1px] border-border px-6 py-0 md:py-2 flex items-center justify-center gap-2"
+        >
+          <img src="./../../assets/icons/add.svg" alt="search icon" />
+          <p class="pb-1 whitespace-nowrap">إضافة مستخدم</p>
+        </button>
+      </div>
     </div>
+    <mat-expansion-panel
+      [(expanded)]="isPanelExpanded"
+      class="w-full !rounded-t-none !rounded-b-[18px]"
+    >
+      <div class="grid grid-cols-12 py-5 px-6 text-primary">
+        <div class="col-span-4 flex justify-center items-center">
+          <h2>الوظيفة:</h2>
+        </div>
+        <div class="col-span-4 flex justify-center items-center">
+          <h2>الحالة:</h2>
+        </div>
+        <div class="col-span-4 flex justify-center items-center">
+          <h2>صلاحية المستخدم:</h2>
+        </div>
+      </div>
+    </mat-expansion-panel>
   </div>
 
   <!-- Employees Table -->

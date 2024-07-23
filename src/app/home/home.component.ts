@@ -10,12 +10,17 @@ import { Employee } from '../dtos/employee.dto';
 export class HomeComponent implements OnInit {
   allEmployees: Employee[] = [];
   selectedEmployees: Employee[] = [];
-  sorting=''
+  sorting = '';
+  isPanelExpanded = false;
   constructor(private employeesService: EmployeesService) {}
   ngOnInit(): void {
     this.employeesService.getEmployees().subscribe((result) => {
       this.allEmployees = result;
     });
+  }
+
+  togglePanel() {
+    this.isPanelExpanded = !this.isPanelExpanded;
   }
 
   onCheckboxChange(employee: Employee) {
@@ -33,10 +38,9 @@ export class HomeComponent implements OnInit {
   }
 
   sortBy(type: string) {
-    if(type === this.sorting){
+    if (type === this.sorting) {
       this.allEmployees.reverse();
-    } 
-    else if (type === 'name') {
+    } else if (type === 'name') {
       this.allEmployees.sort((a, b) => {
         if (a.name < b.name) return -1;
         if (a.name > b.name) return 1;
@@ -76,6 +80,6 @@ export class HomeComponent implements OnInit {
         return 0;
       });
     }
-    this.sorting = type
+    this.sorting = type;
   }
 }
