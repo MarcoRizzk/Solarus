@@ -3,10 +3,15 @@
   --color-secondary: #e35c9c;
   --color-positive: #28be89;
   --color-negative: #e65151;
-  --color-background: #F6F7F9;
-  --color-headertxt: #0A143A;
-  --color-border: #C9CBD5;
+  --color-background: #f6f7f9;
+  --color-headertxt: #0a143a;
+  --color-border: #c9cbd5;
   --color-tabletxt: #636888;
+  background-color: #f6f7f9;
+  padding-top: 64px;
+  padding-left: 148px;
+  padding-right: 148px;
+  direction: rtl;
 }
 @tailwind base;
 @tailwind components;
