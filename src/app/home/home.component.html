@@ -49,11 +49,11 @@
 
   <!-- Employees Table -->
   <div
-    class="bg-white rounded-[34px] p-4 w-full shadow-[0px_4px_24px_0px_rgba(0,0,0,0.08)]"
+    class="bg-white rounded-[34px] p-4 w-full shadow-[0px_4px_24px_0px_rgba(0,0,0,0.08)] overflow-x-auto"
   >
     <!-- Table Header -->
     <div
-      class="w-full flex bg-background rounded-t-[20px] py-4 px-[6px] mb-4 h-[50px]"
+      class="w-full flex bg-background rounded-t-[20px] py-4 px-[6px] mb-4 h-[50px] min-w-[1037px]"
     >
       <div class="w-[2.8%] flex items-center justify-center">
         <img src="./../../assets/icons/minus-box.svg" />
@@ -105,7 +105,7 @@
 
     <!-- Table Contents -->
     <ng-container *ngFor="let employee of allEmployees; let i = index">
-      <div class="w-full flex px-[6px] text-tabletxt text-sm h-10 mb-2">
+      <div class="w-full flex px-[6px] text-tabletxt text-sm h-10 mb-2 min-w-[1037px]">
         <div
           class="w-[2.8%] flex items-center justify-center"
           [ngClass]="(i + 1) % 2 === 0 ? 'bg-background' : 'bg-white'"
@@ -161,7 +161,7 @@
           {{ employee.function }}
         </div>
         <div
-          class="w-[12.15%] flex flex-row-reverse gap-2 pr-4 py-2"
+          class="w-[12.15%] flex flex-row-reverse gap-2 pr-4 py-2 whitespace-nowrap text-xs"
           dir="ltr"
           [ngClass]="(i + 1) % 2 === 0 ? 'bg-background' : 'bg-white'"
         >
