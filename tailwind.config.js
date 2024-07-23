@@ -11,6 +11,7 @@ module.exports = {
         background: "var(--color-background)",
         headertxt: "var(--color-headertxt)",
         border: "var(--color-border)",
+        tabletxt: "var(--color-tabletxt)",
       },
     },
   },

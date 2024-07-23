@@ -1,0 +1,94 @@
+{
+  "employees": [
+    {
+      "serial": 1,
+      "status": "active",
+      "name": "محمد أحمد علي يوسف",
+      "userSerial": 5467898765,
+      "userAuthority": "حامل الكارت",
+      "function": "محاسب",
+      "mobile": "+20 123 456 7890"
+    },
+    {
+      "serial": 2,
+      "status": "inactive",
+      "name": "أحمد حسن خالد إبراهيم",
+      "userSerial": 5467898766,
+      "userAuthority": "مدير الهيكل التنظيمي",
+      "function": "مدير",
+      "mobile": "+20 234 567 8901"
+    },
+    {
+      "serial": 3,
+      "status": "active",
+      "name": "علي محمود عبد الله عمر",
+      "userSerial": 5467898767,
+      "userAuthority": "حامل الكارت",
+      "function": "محاسب",
+      "mobile": "+20 345 678 9012"
+    },
+    {
+      "serial": 4,
+      "status": "inactive",
+      "name": "يوسف إبراهيم سعيد أحمد",
+      "userSerial": 5467898768,
+      "userAuthority": "مدير الهيكل التنظيمي",
+      "function": "مدير",
+      "mobile": "+20 456 789 0123"
+    },
+    {
+      "serial": 5,
+      "status": "active",
+      "name": "عمر خالد محمد حسن",
+      "userSerial": 5467897659,
+      "userAuthority": "حامل الكارت",
+      "function": "محاسب",
+      "mobile": "+20 567 890 1234"
+    },
+    {
+      "serial": 6,
+      "status": "inactive",
+      "name": "سعيد أحمد علي محمد",
+      "userSerial": 5467898765,
+      "userAuthority": "مدير الهيكل التنظيمي",
+      "function": "مدير",
+      "mobile": "+20 678 901 2345"
+    },
+    {
+      "serial": 7,
+      "status": "active",
+      "name": "خالد علي يوسف إبراهيم",
+      "userSerial": 5467898842,
+      "userAuthority": "حامل الكارت",
+      "function": "محاسب",
+      "mobile": "+20 789 012 3456"
+    },
+    {
+      "serial": 8,
+      "status": "inactive",
+      "name": "حسن سعيد محمد أحمد",
+      "userSerial": 5467898830,
+      "userAuthority": "مدير الهيكل التنظيمي",
+      "function": "مدير",
+      "mobile": "+20 890 123 4567"
+    },
+    {
+      "serial": 9,
+      "status": "active",
+      "name": "عبد الله عمر خالد سعيد",
+      "userSerial": 5467898799,
+      "userAuthority": "حامل الكارت",
+      "function": "محاسب",
+      "mobile": "+20 901 234 5678"
+    },
+    {
+      "serial": 10,
+      "status": "inactive",
+      "name": "إبراهيم يوسف حسن علي",
+      "userSerial": 5467894502,
+      "userAuthority": "مدير الهيكل التنظيمي",
+      "function": "مدير",
+      "mobile": "+20 012 345 6789"
+    }
+  ]
+}
