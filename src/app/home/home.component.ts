@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmployeesService } from '../services/employees.service';
 import { Employee } from '../dtos/employee.dto';
 import { EmployeeFilter } from '../dtos/employee-filter.dto';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -12,19 +13,27 @@ export class HomeComponent implements OnInit {
   allEmployees: Employee[] = [];
   selectedEmployees: Employee[] = [];
   filteredEmployees: Employee[] = [];
+  searchedEmployees: Employee[] = [];
+  shownEmployees: Employee[]=[]
   showFiltered = false;
+  showSearched = false;
   allFunctions: Set<string> = new Set();
   allConditions: Set<string> = new Set();
   allAuthorities: Set<string> = new Set();
   filter: EmployeeFilter = { function: [], status: [], userAuthority: [] };
+  searchTxt = '';
 
   sorting = '';
   isFilterExpanded = false;
   isSearchExpanded = false;
-  constructor(private employeesService: EmployeesService) {}
+  constructor(
+    private employeesService: EmployeesService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
   ngOnInit(): void {
     this.employeesService.getEmployees().subscribe((result) => {
-      this.allEmployees = result;
+      this.allEmployees = this.shownEmployees = result;
       result.forEach((item) => {
         this.allFunctions.add(item.function);
       });
@@ -35,6 +44,7 @@ export class HomeComponent implements OnInit {
         this.allAuthorities.add(item.userAuthority);
       });
     });
+    this.initializeFiltersFromUrl();
   }
 
   toggleFilterPanel() {
@@ -62,36 +72,45 @@ export class HomeComponent implements OnInit {
   }
 
   onFilterCheckboxChange(type: string, option: string) {
+    let filterArray: string[] = [];
+
     if (type === 'function') {
-      const findFunction = this.filter.function.find((itm) => itm === option);
-      if (findFunction) {
-        this.filter.function = this.filter.function.filter(
-          (itm) => itm !== option
-        );
-      } else {
-        this.filter.function.push(option);
-      }
+      filterArray = this.filter.function;
+    } else if (type === 'condition') {
+      filterArray = this.filter.status;
+    } else if (type === 'authority') {
+      filterArray = this.filter.userAuthority;
     }
-    if (type === 'condition') {
-      const findStatus = this.filter.status.find((itm) => itm === option);
-      if (findStatus) {
-        this.filter.status = this.filter.status.filter((itm) => itm !== option);
-      } else {
-        this.filter.status.push(option);
-      }
+
+    const index = filterArray.indexOf(option);
+    if (index > -1) {
+      filterArray.splice(index, 1);
+    } else {
+      filterArray.push(option);
     }
-    if (type === 'authority') {
-      const findAuthority = this.filter.userAuthority.find(
-        (itm) => itm === option
-      );
-      if (findAuthority) {
-        this.filter.userAuthority = this.filter.userAuthority.filter(
-          (itm) => itm !== option
-        );
-      } else {
-        this.filter.userAuthority.push(option);
+  }
+  private updateUrlParams() {
+    const params: any = {
+      status: this.filter.status.length ? this.filter.status.join(',') : null,
+      userAuthority: this.filter.userAuthority.length
+        ? this.filter.userAuthority.join(',')
+        : null,
+      function: this.filter.function.length
+        ? this.filter.function.join(',')
+        : null,
+    };
+
+    Object.keys(params).forEach((key) => {
+      if (params[key] === null) {
+        delete params[key];
       }
-    }
+    });
+
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: params,
+      queryParamsHandling: '',
+    });
   }
 
   sortBy(type: string) {
@@ -142,8 +161,39 @@ export class HomeComponent implements OnInit {
 
   applyFilter() {
     this.showFiltered = true;
+    this.updateUrlParams();
     this.employeesService.getEmployees(this.filter).subscribe((result) => {
-      this.filteredEmployees = result;
+      this.filteredEmployees=this.shownEmployees = result;
     });
+  }
+
+  private initializeFiltersFromUrl() {
+    this.route.queryParams.subscribe((params) => {
+      this.filter.status = params['status'] ? params['status'].split(',') : [];
+      this.filter.userAuthority = params['userAuthority']
+        ? params['userAuthority'].split(',')
+        : [];
+      this.filter.function = params['function']
+        ? params['function'].split(',')
+        : [];
+    });
+    this.applyFilter();
+  }
+  applySearch() {
+    if (this.searchTxt !== '') {
+      this.showSearched = true;
+      const dataToSearchIn = this.showFiltered
+        ? this.filteredEmployees
+        : this.allEmployees;
+      const searchTxtLower = this.searchTxt.toLowerCase();
+      this.searchedEmployees= this.shownEmployees = dataToSearchIn.filter((employee) =>
+        Object.values(employee).some((value) =>
+          value.toString().toLowerCase().includes(searchTxtLower)
+        )
+      );
+    } else {
+      this.showSearched = false;
+      this.shownEmployees = this.showFiltered? this.filteredEmployees: this.allEmployees
+    }
   }
 }

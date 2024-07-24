@@ -76,6 +76,7 @@
                 <input
                   class="w-4 h-4"
                   type="checkbox"
+                  [checked]="filter.function.includes(function)"
                   (click)="onFilterCheckboxChange('function', function)"
                 />
                 {{ function }}
@@ -93,6 +94,7 @@
                   class="w-4 h-4"
                   type="checkbox"
                   (click)="onFilterCheckboxChange('condition', condition)"
+                  [checked]="filter.status.includes(condition)"
                 />
                 {{ condition }}
               </div>
@@ -108,6 +110,7 @@
                 <input
                   class="w-4 h-4"
                   type="checkbox"
+                  [checked]="filter.userAuthority.includes(authority)"
                   (click)="onFilterCheckboxChange('authority', authority)"
                 />
                 {{ authority }}
@@ -127,7 +130,15 @@
       [(expanded)]="isSearchExpanded"
       class="w-full !rounded-t-none !rounded-b-[18px]"
     >
-      Search
+      <div class="flex gap-4 mt-9 mb-5">
+        <p class="text-base font-medium">أبحث عن:</p>
+        <input
+          type="search"
+          [(ngModel)]="searchTxt"
+          (ngModelChange)="applySearch()"
+          class="w-1/2 border-2 border-primary rounded-full px-2 py-1"
+        />
+      </div>
     </mat-expansion-panel>
   </div>
 
@@ -196,7 +207,7 @@
     <!-- Table Contents -->
     <ng-container
       *ngFor="
-        let employee of showFiltered ? filteredEmployees : allEmployees;
+        let employee of shownEmployees
         let i = index
       "
     >
@@ -286,6 +297,18 @@
       class="text-center my-10 font-bold text-tabletxt text-lg"
     >
       لا توجد بيانات مطابقة لنتيجة الفرز
+    </div>
+    <div
+      *ngIf="!showFiltered && allEmployees.length === 0"
+      class="text-center my-10 font-bold text-tabletxt text-lg"
+    >
+      لا توجد بيانات
+    </div>
+    <div
+      *ngIf="showSearched && searchedEmployees.length === 0"
+      class="text-center my-10 font-bold text-tabletxt text-lg"
+    >
+      لا توجد بيانات مطابقة لنتيجة البحث
     </div>
   </div>
 </div>
