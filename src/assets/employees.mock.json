@@ -2,7 +2,7 @@
   "employees": [
     {
       "serial": 1,
-      "status": "active",
+      "status": "فعال",
       "name": "محمد أحمد علي يوسف",
       "userSerial": 5467898765,
       "userAuthority": "حامل الكارت",
@@ -12,7 +12,7 @@
     },
     {
       "serial": 2,
-      "status": "inactive",
+      "status": "غير فعال",
       "name": "أحمد حسن خالد إبراهيم",
       "userSerial": 5467898766,
       "userAuthority": "مدير الهيكل التنظيمي",
@@ -22,7 +22,7 @@
     },
     {
       "serial": 3,
-      "status": "active",
+      "status": "فعال",
       "name": "علي محمود عبد الله عمر",
       "userSerial": 5467898767,
       "userAuthority": "حامل الكارت",
@@ -32,7 +32,7 @@
     },
     {
       "serial": 4,
-      "status": "inactive",
+      "status": "غير فعال",
       "name": "يوسف إبراهيم سعيد أحمد",
       "userSerial": 5467898768,
       "userAuthority": "مدير الهيكل التنظيمي",
@@ -42,7 +42,7 @@
     },
     {
       "serial": 5,
-      "status": "active",
+      "status": "فعال",
       "name": "عمر خالد محمد حسن",
       "userSerial": 5467897659,
       "userAuthority": "حامل الكارت",
@@ -52,7 +52,7 @@
     },
     {
       "serial": 6,
-      "status": "inactive",
+      "status": "غير فعال",
       "name": "سعيد أحمد علي محمد",
       "userSerial": 5467898765,
       "userAuthority": "مدير الهيكل التنظيمي",
@@ -62,7 +62,7 @@
     },
     {
       "serial": 7,
-      "status": "active",
+      "status": "فعال",
       "name": "خالد علي يوسف إبراهيم",
       "userSerial": 5467898842,
       "userAuthority": "حامل الكارت",
@@ -72,7 +72,7 @@
     },
     {
       "serial": 8,
-      "status": "inactive",
+      "status": "غير فعال",
       "name": "حسن سعيد محمد أحمد",
       "userSerial": 5467898830,
       "userAuthority": "مدير الهيكل التنظيمي",
@@ -82,7 +82,7 @@
     },
     {
       "serial": 9,
-      "status": "active",
+      "status": "فعال",
       "name": "عبد الله عمر خالد سعيد",
       "userSerial": 5467898799,
       "userAuthority": "حامل الكارت",
@@ -92,7 +92,7 @@
     },
     {
       "serial": 10,
-      "status": "inactive",
+      "status": "غير فعال",
       "name": "إبراهيم يوسف حسن علي",
       "userSerial": 5467894502,
       "userAuthority": "مدير الهيكل التنظيمي",

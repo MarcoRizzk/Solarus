@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeesService } from '../services/employees.service';
 import { Employee } from '../dtos/employee.dto';
+import { EmployeeFilter } from '../dtos/employee-filter.dto';
 
 @Component({
   selector: 'app-home',
@@ -10,17 +11,40 @@ import { Employee } from '../dtos/employee.dto';
 export class HomeComponent implements OnInit {
   allEmployees: Employee[] = [];
   selectedEmployees: Employee[] = [];
+  filteredEmployees: Employee[] = [];
+  showFiltered = false;
+  allFunctions: Set<string> = new Set();
+  allConditions: Set<string> = new Set();
+  allAuthorities: Set<string> = new Set();
+  filter: EmployeeFilter = { function: [], status: [], userAuthority: [] };
+
   sorting = '';
-  isPanelExpanded = false;
+  isFilterExpanded = false;
+  isSearchExpanded = false;
   constructor(private employeesService: EmployeesService) {}
   ngOnInit(): void {
     this.employeesService.getEmployees().subscribe((result) => {
       this.allEmployees = result;
+      result.forEach((item) => {
+        this.allFunctions.add(item.function);
+      });
+      result.forEach((item) => {
+        this.allConditions.add(item.status);
+      });
+      result.forEach((item) => {
+        this.allAuthorities.add(item.userAuthority);
+      });
     });
   }
 
-  togglePanel() {
-    this.isPanelExpanded = !this.isPanelExpanded;
+  toggleFilterPanel() {
+    this.isSearchExpanded = false;
+    this.isFilterExpanded = !this.isFilterExpanded;
+  }
+
+  toggleSearchPanel() {
+    this.isFilterExpanded = false;
+    this.isSearchExpanded = !this.isSearchExpanded;
   }
 
   onCheckboxChange(employee: Employee) {
@@ -34,6 +58,39 @@ export class HomeComponent implements OnInit {
       this.selectedEmployees = this.selectedEmployees.filter(
         (selected) => selected.serial !== employee.serial
       );
+    }
+  }
+
+  onFilterCheckboxChange(type: string, option: string) {
+    if (type === 'function') {
+      const findFunction = this.filter.function.find((itm) => itm === option);
+      if (findFunction) {
+        this.filter.function = this.filter.function.filter(
+          (itm) => itm !== option
+        );
+      } else {
+        this.filter.function.push(option);
+      }
+    }
+    if (type === 'condition') {
+      const findStatus = this.filter.status.find((itm) => itm === option);
+      if (findStatus) {
+        this.filter.status = this.filter.status.filter((itm) => itm !== option);
+      } else {
+        this.filter.status.push(option);
+      }
+    }
+    if (type === 'authority') {
+      const findAuthority = this.filter.userAuthority.find(
+        (itm) => itm === option
+      );
+      if (findAuthority) {
+        this.filter.userAuthority = this.filter.userAuthority.filter(
+          (itm) => itm !== option
+        );
+      } else {
+        this.filter.userAuthority.push(option);
+      }
     }
   }
 
@@ -81,5 +138,12 @@ export class HomeComponent implements OnInit {
       });
     }
     this.sorting = type;
+  }
+
+  applyFilter() {
+    this.showFiltered = true;
+    this.employeesService.getEmployees(this.filter).subscribe((result) => {
+      this.filteredEmployees = result;
+    });
   }
 }

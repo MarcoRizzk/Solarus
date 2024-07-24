@@ -1,6 +1,6 @@
 export interface Employee {
     serial: number;
-    status: 'active' | 'inactive';
+    status: 'فعال' | 'غير فعال';
     name: string;
     userSerial: number;
     userAuthority: string;

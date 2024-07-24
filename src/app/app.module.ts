@@ -8,6 +8,7 @@ import { SingleEmployeeComponent } from './single-employee/single-employee.compo
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
