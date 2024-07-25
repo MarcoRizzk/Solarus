@@ -65,8 +65,8 @@
       class="w-full !rounded-t-none !rounded-b-[18px]"
     >
       <div class="flex flex-col gap-2">
-        <div class="grid grid-cols-12 py-5 px-6 text-primary">
-          <div class="col-span-4 flex flex-col gap-5">
+        <div class="grid grid-cols-12 py-5 px-6 text-primary gap-4 md:gp-0">
+          <div class="col-span-12 md:col-span-4 flex flex-col gap-2 md:gap-5">
             <p class="text-lg">الوظيفة:</p>
             <div class="flex flex-wrap gap-4">
               <div
@@ -83,7 +83,7 @@
               </div>
             </div>
           </div>
-          <div class="col-span-4 flex flex-col gap-5">
+          <div class="col-span-12 md:col-span-4 flex flex-col gap-2 md:gap-5">
             <p class="text-lg">الحالة:</p>
             <div class="flex flex-wrap gap-4">
               <div
@@ -100,7 +100,7 @@
               </div>
             </div>
           </div>
-          <div class="col-span-4 flex flex-col gap-5">
+          <div class="col-span-12 md:col-span-4 flex flex-col gap-2 md:gap-5">
             <p class="text-lg">صلاحية المستخدم:</p>
             <div class="flex flex-wrap gap-4">
               <div
@@ -151,7 +151,9 @@
       class="w-full flex bg-background rounded-t-[20px] py-4 px-[6px] mb-4 h-[50px] min-w-[1037px]"
     >
       <div class="w-[2.8%] flex items-center justify-center">
-        <img src="./../../assets/icons/minus-box.svg" />
+        <button (click)="handleMultiSelection()">
+          <img src="./../../assets/icons/minus-box.svg" />
+        </button>
       </div>
       <div class="w-[10.7%] flex gap-2 pr-4">
         <button (click)="sortBy('serial')" title="الترتيب حسب المُسلسل">
@@ -205,12 +207,7 @@
     </div>
 
     <!-- Table Contents -->
-    <ng-container
-      *ngFor="
-        let employee of shownEmployees
-        let i = index
-      "
-    >
+    <ng-container *ngFor="let employee of shownEmployees; let i = index">
       <div
         class="w-full flex px-[6px] text-tabletxt text-sm h-10 mb-2 min-w-[1037px]"
       >
@@ -222,6 +219,7 @@
             class="w-4 h-4"
             type="checkbox"
             (click)="onCheckboxChange(employee)"
+            [checked]="this.selectedEmployees.includes(employee)"
           />
         </div>
         <div
@@ -286,9 +284,18 @@
           class="w-[2.8%] flex items-center justify-center"
           [ngClass]="(i + 1) % 2 === 0 ? 'bg-background' : 'bg-white'"
         >
-          <button>
+          <button [matMenuTriggerFor]="emplyeeMenu">
             <img src="./../../assets/icons/3-dots.svg" />
           </button>
+          <mat-menu #emplyeeMenu="matMenu" class="!bg-white rounded-md">
+            <button
+              (click)="gotoSingleEmployeePage(employee.serial)"
+              mat-menu-item
+              class="!text-tabletxt"
+            >
+              Go to employee page
+            </button>
+          </mat-menu>
         </div>
       </div>
     </ng-container>
@@ -311,4 +318,11 @@
       لا توجد بيانات مطابقة لنتيجة البحث
     </div>
   </div>
+  <button
+    class="bg-negative rounded-full px-3 py-1 flex-nowrap w-1/2 md:w-1/5 mx-auto"
+    *ngIf="selectedEmployees.length > 0"
+    (click)="hideSelected()"
+  >
+    اخفاء الموظفيين المختاريين
+  </button>
 </div>

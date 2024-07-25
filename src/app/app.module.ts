@@ -7,25 +7,22 @@ import { HomeComponent } from './home/home.component';
 import { SingleEmployeeComponent } from './single-employee/single-employee.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatMenuModule } from '@angular/material/menu';
 import { FormsModule } from '@angular/forms';
 
-
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    SingleEmployeeComponent
-  ],
+  declarations: [AppComponent, HomeComponent, SingleEmployeeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatExpansionModule,
-    FormsModule
+    FormsModule,
+    MatMenuModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   selectedEmployees: Employee[] = [];
   filteredEmployees: Employee[] = [];
   searchedEmployees: Employee[] = [];
-  shownEmployees: Employee[]=[]
+  shownEmployees: Employee[] = [];
   showFiltered = false;
   showSearched = false;
   allFunctions: Set<string> = new Set();
@@ -163,7 +163,7 @@ export class HomeComponent implements OnInit {
     this.showFiltered = true;
     this.updateUrlParams();
     this.employeesService.getEmployees(this.filter).subscribe((result) => {
-      this.filteredEmployees=this.shownEmployees = result;
+      this.filteredEmployees = this.shownEmployees = result;
     });
   }
 
@@ -186,14 +186,39 @@ export class HomeComponent implements OnInit {
         ? this.filteredEmployees
         : this.allEmployees;
       const searchTxtLower = this.searchTxt.toLowerCase();
-      this.searchedEmployees= this.shownEmployees = dataToSearchIn.filter((employee) =>
-        Object.values(employee).some((value) =>
-          value.toString().toLowerCase().includes(searchTxtLower)
-        )
+      this.searchedEmployees = this.shownEmployees = dataToSearchIn.filter(
+        (employee) =>
+          Object.values(employee).some((value) =>
+            value.toString().toLowerCase().includes(searchTxtLower)
+          )
       );
     } else {
       this.showSearched = false;
-      this.shownEmployees = this.showFiltered? this.filteredEmployees: this.allEmployees
+      this.shownEmployees = this.showFiltered
+        ? this.filteredEmployees
+        : this.allEmployees;
     }
+  }
+
+  gotoSingleEmployeePage(emplyeeSerial: number) {
+    console.log(emplyeeSerial);
+    this.router.navigate([`employee/${emplyeeSerial}`]);
+  }
+
+  handleMultiSelection() {
+    if (this.selectedEmployees.length > 0) {
+      this.selectedEmployees = [];
+    } else {
+      this.selectedEmployees = this.shownEmployees;
+    }
+  }
+
+  hideSelected() {
+    for (const emplyee of this.selectedEmployees) {
+      this.shownEmployees = this.shownEmployees.filter(
+        (emp) => emp !== emplyee
+      );
+    }
+    this.selectedEmployees = [];
   }
 }
