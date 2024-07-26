@@ -57,6 +57,10 @@ This project is designed to create an employee portal that matches the provided 
 4. **Access the Application:**
     Open your browser and navigate to `http://localhost:4200/`
 
+5. **Run the Service Unit Test:**
+    ```bash
+    ng test
+
 ## Conclusion
 
 This project demonstrates the ability to create a dynamic, responsive employee portal with sorting and filtering capabilities. The implementation follows the given design and user stories closely, ensuring a high-quality user experience.
