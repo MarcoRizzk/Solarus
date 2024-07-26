@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatMenuModule } from '@angular/material/menu';
 import { FormsModule } from '@angular/forms';
+import { EmployeesService } from './services/employees.service';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, SingleEmployeeComponent],
@@ -22,7 +23,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     MatMenuModule,
   ],
-  providers: [],
+  providers: [EmployeesService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
