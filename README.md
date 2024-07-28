@@ -4,7 +4,6 @@
 
 This project is designed to create an employee portal that matches the provided design and experience. The design, which is in Arabic, can be found in the “UI Design” section. The goal is to deliver a high-quality result that meets the following requirements:
 
-## Requirements
 
 ### Employees Page
 -- **List of Employees:** Display a list of all employees retrieved from a fake service API.
@@ -33,8 +32,6 @@ This project is designed to create an employee portal that matches the provided 
 -- **Fake Employee Service:** A service to retrieve all employees in JSON format.
 -- **Fake Filter Configuration Service:** A service to retrieve filter configuration in JSON format.
 
-### Sharing Results
--- **Figma Design:** [Inspect the design on Figma](https://www.figma.com/file/5fcwvQIdlvf4pRRu8MF4UT/Angular?type=design&node-id=0%3A1&mode=dev&t=c2s8VVcDjNQ15DA4-1) and ensure you are in “Dev Mode”.
 
 ## How to Run
 
